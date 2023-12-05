@@ -4,6 +4,6 @@
 export default {
   failed: "Action failed",
   success: "Action was successful",
-  title: "ZhiQing Universe School",
-  subtitle: "(Under Construction...)",
+  title: "至青宇宙学校",
+  subtitle: "(建构中...)",
 };
