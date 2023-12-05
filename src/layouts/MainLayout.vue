@@ -15,6 +15,14 @@
 
         <div>{{ $t("subtitle") }}</div>
       </q-toolbar>
+
+      <q-toolbar inset>
+        <q-breadcrumbs active-color="white" style="font-size: 16px">
+          <q-breadcrumbs-el label="Home" icon="home" />
+          <q-breadcrumbs-el label="Components" icon="widgets" />
+          <q-breadcrumbs-el :label="path" />
+        </q-breadcrumbs>
+      </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
@@ -64,7 +72,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { useRoute } from "vue-router";
+import { defineComponent, ref, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
@@ -138,12 +147,16 @@ export default defineComponent({
   },
 
   setup() {
+    const route = useRoute();
+    const path = computed(() => route.path);
     const leftDrawerOpen = ref(false);
 
     return {
       essentialLinks: linksList,
       courseItems: courseItems,
       leftDrawerOpen,
+      route,
+      path,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
