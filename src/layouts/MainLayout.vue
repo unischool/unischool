@@ -19,6 +19,34 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
+        <q-item clickable to="/">
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Home</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item
+          clickable
+          v-for="c in Object.values(courseItems)"
+          :key="c.id"
+          :to="c.link"
+        >
+          <q-item-section v-if="c.icon" avatar>
+            <q-icon :name="c.icon" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{ $t(c.title) }}</q-item-label>
+            <q-item-label caption v-if="c.caption">{{
+              $t(c.caption)
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-item-label header> Essential Links </q-item-label>
 
         <EssentialLink
@@ -30,7 +58,7 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view :courseItems="courseItems" />
     </q-page-container>
   </q-layout>
 </template>
@@ -84,6 +112,24 @@ const linksList = [
   },
 ];
 
+const courseItems = ref({
+  death_and_life: {
+    id: "death_and_life",
+    title: "Death and Life",
+    caption: "Death and Life Caption",
+    description: "Death and Life Description",
+    icon: "school",
+    link: "/death_and_life",
+    prices: {
+      full: 450,
+      half: 350,
+      friend: 350,
+      senior: 250,
+      special: 1,
+    },
+  },
+});
+
 export default defineComponent({
   name: "MainLayout",
 
@@ -96,6 +142,7 @@ export default defineComponent({
 
     return {
       essentialLinks: linksList,
+      courseItems: courseItems,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
