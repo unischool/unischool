@@ -8,6 +8,14 @@ const routes = [
         path: "death_and_life",
         component: () => import("pages/DeathAndLifePage.vue"),
       },
+      {
+        path: "nullity_13",
+        component: () => import("pages/Nullity_13Page.vue"),
+      },
+      {
+        path: "life_art_elem",
+        component: () => import("pages/Life_Art_ElemPage.vue"),
+      },
     ],
   },
 

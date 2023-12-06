@@ -19,7 +19,7 @@ export default defineComponent({
   props: ["courseItems"],
   setup() {
     return {
-      cid: ref("death_and_life"),
+      cid: ref("life_art_elem"),
     };
   },
 });

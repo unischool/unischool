@@ -19,8 +19,7 @@
       <q-toolbar inset>
         <q-breadcrumbs active-color="white" style="font-size: 16px">
           <q-breadcrumbs-el label="Home" icon="home" />
-          <q-breadcrumbs-el label="Components" icon="widgets" />
-          <q-breadcrumbs-el :label="tail(path)" />
+          <q-breadcrumbs-el v-if="tail(path)" :label="$t(trans(tail(path)))" />
         </q-breadcrumbs>
       </q-toolbar>
     </q-header>
@@ -124,11 +123,46 @@ const linksList = [
 const courseItems = ref({
   death_and_life: {
     id: "death_and_life",
-    title: "Death and Life",
-    caption: "Death and Life Caption",
-    description: "Death and Life Description",
+    status: "new",
+    title: "Death_And_Life",
+    caption: "Death_And_Life_Caption",
+    description: "Death_And_Life_Description",
     icon: "school",
     link: "/death_and_life",
+    prices: {
+      full: 450,
+      half: 350,
+      friend: 350,
+      senior: 250,
+      special: 1,
+    },
+  },
+  nullity_13: {
+    id: "nullity_13",
+    status: "new",
+    title: "Nullity_13",
+    caption: "Nullity_13_Caption",
+    useHTML: true,
+    description: "Nullity_13_Description",
+    icon: "school",
+    link: "/nullity_13",
+    prices: {
+      full: 450,
+      half: 350,
+      friend: 350,
+      senior: 250,
+      special: 1,
+    },
+  },
+  life_art_elem: {
+    id: "life_art_elem",
+    status: "new",
+    title: "Life_Art_Elem",
+    caption: "Life_Art_Elem_Caption",
+    useHTML: true,
+    description: "Life_Art_Elem_Description",
+    icon: "school",
+    link: "/life_art_elem",
     prices: {
       full: 450,
       half: 350,
@@ -157,8 +191,15 @@ export default defineComponent({
       leftDrawerOpen,
       route,
       path,
+      trans(str) {
+        let arr = str.split("_");
+        let result = arr.map(
+          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+        );
+        return result.join("_");
+      },
       tail(str) {
-        return str.split("/").pop();
+        return str.slice(1);
       },
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
