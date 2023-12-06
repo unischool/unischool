@@ -20,7 +20,7 @@
         <q-breadcrumbs active-color="white" style="font-size: 16px">
           <q-breadcrumbs-el label="Home" icon="home" />
           <q-breadcrumbs-el label="Components" icon="widgets" />
-          <q-breadcrumbs-el :label="path" />
+          <q-breadcrumbs-el :label="tail(path)" />
         </q-breadcrumbs>
       </q-toolbar>
     </q-header>
@@ -157,6 +157,9 @@ export default defineComponent({
       leftDrawerOpen,
       route,
       path,
+      tail(str) {
+        return str.split("/").pop();
+      },
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
