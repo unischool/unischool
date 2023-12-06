@@ -5,6 +5,10 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
+        path: "class/:courseId",
+        component: () => import("pages/GeneralClassPage.vue"),
+      },
+      {
         path: "death_and_life",
         component: () => import("pages/DeathAndLifePage.vue"),
       },
