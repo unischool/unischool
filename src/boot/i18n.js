@@ -7,6 +7,7 @@ export default boot(({ app }) => {
     locale: "zh-CN",
     globalInjection: true,
     messages,
+    warnHtmlMessage: false,
   });
 
   // Set i18n instance on app
