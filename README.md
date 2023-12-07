@@ -2,6 +2,8 @@
 
 An Universal School
 
+[工程示意圖請見此](https://github.com/bestian/unischool/discussions/21)
+
 ## Install the dependencies
 ```bash
 yarn
