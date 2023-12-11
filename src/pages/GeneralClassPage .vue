@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center" padding>
-    <div class="text-h6">{{ $t(courseItems[cid].title) }}</div>
+    <div class="text-h6 red">{{ $t(courseItems[cid].title) }}</div>
     <p
       v-html="$t(courseItems[cid].description)"
       v-if="courseItems[cid].useHTML"
@@ -25,4 +25,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.red {
+  color: red;
+}
+</style>

@@ -123,7 +123,7 @@ const linksList = [
 const courseItems = ref({
   death_and_life: {
     id: "death_and_life",
-    status: "new",
+    isOpen: true,
     title: "Death_And_Life",
     caption: "Death_And_Life_Caption",
     description: "Death_And_Life_Description",
@@ -139,7 +139,7 @@ const courseItems = ref({
   },
   nullity_13: {
     id: "nullity_13",
-    status: "new",
+    isOpen: true,
     title: "Nullity_13",
     caption: "Nullity_13_Caption",
     useHTML: true,
@@ -156,7 +156,7 @@ const courseItems = ref({
   },
   life_art_elem: {
     id: "life_art_elem",
-    status: "new",
+    isOpen: false,
     title: "Life_Art_Elem",
     caption: "Life_Art_Elem_Caption",
     useHTML: true,

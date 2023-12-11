@@ -1,0 +1,7 @@
+// app global css in SCSS form
+
+@media screen and (max-width: 768px) {
+  .desktop-only {
+    display: none !important; /* hide on phone */
+  }
+}
