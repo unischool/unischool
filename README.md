@@ -5,6 +5,8 @@ An Universal School
 
 前端程式結構請用VS Code打開專案，選Explorer，就可以看到專案的樹狀結構，同步視訊時我會再說明~
 
+build  出來的位置是 dist/spa
+
 ## Install the dependencies
 ```bash
 yarn
