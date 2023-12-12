@@ -12,15 +12,26 @@
 </template>
 
 <script>
+import { watch } from "vue";
 import { defineComponent, ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 export default defineComponent({
   name: "IndexPage",
   props: ["courseItems"],
-  setup(props) {
+  setup() {
     return {
-      cid: ref(props.$route.params.courseId)),
+      cid: ref('')),
     };
+  },
+  watch: {
+    watch(
+      () => route.params.cid,
+      async newId => {
+      this.cid = to.params.cid;
+    },
   },
 });
 </script>
