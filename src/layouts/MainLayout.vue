@@ -40,6 +40,28 @@
           clickable
           v-for="c in Object.values(courseItems)"
           :key="c.id"
+          :to="c.id"
+        >
+          <q-item-section v-if="c.icon" avatar>
+            <q-icon :name="c.icon" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>{{ $t(c.title) }}</q-item-label>
+            <q-item-label caption v-if="c.caption">{{
+              $t(c.caption)
+            }}</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-separator />
+
+        <q-item-label header> 還未好的動態路由 </q-item-label>
+
+        <q-item
+          clickable
+          v-for="c in Object.values(courseItems)"
+          :key="c.id"
           :to="'/class/' + c.id"
         >
           <q-item-section v-if="c.icon" avatar>
