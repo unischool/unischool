@@ -1,73 +1,34 @@
-<template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title> {{ $t("title") }} </q-toolbar-title>
-
-        <div>{{ $t("subtitle") }}</div>
-      </q-toolbar>
-
-      <q-toolbar inset>
-        <q-breadcrumbs active-color="white" style="font-size: 16px">
-          <q-breadcrumbs-el label="Home" icon="home" />
-          <q-breadcrumbs-el v-if="tail(path)" :label="$t(trans(tail(path)))" />
-        </q-breadcrumbs>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item clickable to="/">
-          <q-item-section avatar>
-            <q-icon name="home" />
-          </q-item-section>
-
-          <q-item-section>
-            <q-item-label>Home</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item
-          clickable
-          v-for="c in Object.values(courseItems)"
-          :key="c.id"
-          :to="c.link"
-        >
-          <q-item-section v-if="c.icon" avatar>
-            <q-icon :name="c.icon" />
-          </q-item-section>
-
-          <q-item-section>
-            <q-item-label>{{ $t(c.title) }}</q-item-label>
-            <q-item-label caption v-if="c.caption">{{
-              $t(c.caption)
-            }}</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view :courseItems="courseItems" />
-    </q-page-container>
-  </q-layout>
+<template lang="pug">
+q-layout(view="lHh Lpr lFf")
+  q-header(elevated)
+    q-toolbar
+      q-btn(flat, dense, round, icon="menu", aria-label="Menu", @click="toggleLeftDrawer")
+      q-toolbar-title {{ $t(&quot;title&quot;) }}
+      div {{ $t(&quot;subtitle&quot;) }}
+    q-toolbar(inset)
+      q-breadcrumbs(active-color="white", style="font-size: 16px")
+        q-breadcrumbs-el(label="Home", icon="home")
+        q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
+  q-drawer(v-model="leftDrawerOpen", show-if-above, bordered)
+    q-list
+      q-item(clickable, to="/")
+        q-item-section(avatar)
+          q-icon(name="home")
+        q-item-section
+          q-item-label Home
+      q-item(clickable, v-for="c in Object.values(courseItems)", :key="c.id", :to="'/class/' + c.id")
+        q-item-section(v-if="c.icon", avatar)
+          q-icon(:name="c.icon")
+        q-item-section
+          q-item-label {{ $t(c.title) }}
+          q-item-label(caption, v-if="c.caption")
+            | {{
+            | $t(c.caption)
+            | }}
+      q-item-label(header) Essential Links
+      EssentialLink(v-for="link in essentialLinks", :key="link.title", v-bind="link")
+  q-page-container
+    router-view(:courseItems="courseItems")
 </template>
 
 <script>
