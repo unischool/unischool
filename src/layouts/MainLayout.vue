@@ -13,7 +13,22 @@
 
         <q-toolbar-title> {{ $t("title") }} </q-toolbar-title>
 
-        <div>{{ $t("subtitle") }}</div>
+        <!-- <div>{{ $t("subtitle") }}</div>-->
+        <q-btn flat color="white" @click="openCart">
+          <q-icon size="md" name="shopping_cart" />
+          <q-badge class="move-to-left" color="red" floating size="lg">
+            0
+          </q-badge>
+        </q-btn>
+        <q-btn
+          color="white"
+          flat
+          dense
+          round
+          size="xl"
+          icon="account_circle"
+          @click="tryLogin"
+        ></q-btn>
       </q-toolbar>
 
       <q-toolbar inset>
@@ -186,11 +201,13 @@ export default defineComponent({
     const route = useRoute();
     const path = computed(() => route.path);
     const leftDrawerOpen = ref(false);
+    const showLoginComponent = ref(false);
 
     return {
       essentialLinks: linksList,
       courseItems: courseItems,
       leftDrawerOpen,
+      showLoginComponent,
       route,
       path,
       trans(str) {
@@ -206,6 +223,14 @@ export default defineComponent({
       },
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+      tryLogin() {
+        showLoginComponent.value = true;
+        window.scrollTo(0, 0);
+        window.alert("建構中...");
+      },
+      openCart() {
+        window.alert("建構中...");
       },
     };
   },
