@@ -40,7 +40,7 @@
           clickable
           v-for="c in Object.values(courseItems)"
           :key="c.id"
-          :to="c.link"
+          :to="'/class/' + c.id"
         >
           <q-item-section v-if="c.icon" avatar>
             <q-icon :name="c.icon" />
@@ -192,11 +192,12 @@ export default defineComponent({
       route,
       path,
       trans(str) {
-        let arr = str.split("_");
-        let result = arr.map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1)
-        );
-        return result.join("_");
+        let cid = str.replace(/class\//, "");
+        // Regular Expression
+        let ans = this.courseItems[cid];
+
+        // console.log(this.$t(ans.title));
+        return ans.title;
       },
       tail(str) {
         return str.slice(1);
