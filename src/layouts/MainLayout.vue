@@ -3,8 +3,8 @@ q-layout(view="lHh Lpr lFf")
   q-header(elevated)
     q-toolbar
       q-btn(flat, dense, round, icon="menu", aria-label="Menu", @click="toggleLeftDrawer")
-      q-toolbar-title {{ $t('title') }}
-      div {{ $t('subtitle') }}
+      q-toolbar-title {{ $t(&quot;title&quot;) }}
+      div {{ $t(&quot;subtitle&quot;) }}
     q-toolbar(inset)
       q-breadcrumbs(active-color="white", style="font-size: 16px")
         q-breadcrumbs-el(label="Home", icon="home")
@@ -20,7 +20,7 @@ q-layout(view="lHh Lpr lFf")
         q-item-section(v-if="c.icon", avatar)
           q-icon(:name="c.icon")
         q-item-section
-          q-item-label {{ $t(c.name) }}
+          q-item-label {{ $t(c.title) }}
           q-item-label(caption, v-if="c.caption")
             | {{
             | $t(c.caption)
@@ -85,7 +85,7 @@ const courseItems = ref({
   death_and_life: {
     id: "death_and_life",
     isOpen: true,
-    className: "Death_And_Life",
+    title: "Death_And_Life",
     caption: "Death_And_Life_Caption",
     description: "Death_And_Life_Description",
     icon: "school",
@@ -101,7 +101,7 @@ const courseItems = ref({
   nullity_13: {
     id: "nullity_13",
     isOpen: true,
-    className: "Nullity_13",
+    title: "Nullity_13",
     caption: "Nullity_13_Caption",
     useHTML: true,
     description: "Nullity_13_Description",
@@ -118,7 +118,7 @@ const courseItems = ref({
   life_art_elem: {
     id: "life_art_elem",
     isOpen: false,
-    className: "Life_Art_Elem",
+    title: "Life_Art_Elem",
     caption: "Life_Art_Elem_Caption",
     useHTML: true,
     description: "Life_Art_Elem_Description",

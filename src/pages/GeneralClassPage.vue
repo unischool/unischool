@@ -1,8 +1,8 @@
 <template lang="pug">
 q-page.flex.flex-center(padding)
-  .text-h6.red {{ $t(classItems && classItems[cid] && classItems[cid].className) }}
-//  p(v-html="$t(classItems && classItems[cid] && classItems[cid].description)", v-if="classItems && classItems[cid].useHTML")
-//  p(v-else) {{ $t(classItems && classItems[cid] && classItems[cid].description) }}
+  .text-h6.red {{ $t(classItems && classItems[cid] && classItems[cid].title) }}
+  p(v-html="$t(classItems && classItems[cid] && classItems[cid].description)", v-if="classItems && classItems[cid].useHTML")
+  p(v-else) {{ $t(classItems && classItems[cid] && classItems[cid].description) }}
 
 </template>
 
