@@ -1,15 +1,21 @@
 <template>
-  <q-page id ="c-page" class="flex flex-center" padding>
-    <div id="header" class="text-h6" >
-      {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}
+  <q-page id="c-page" class="flex flex-center">
+    <div class="row">
+      <div class="col-12">
+        <div id="header" class="text-h6">
+          {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}
+        </div>
+        <p
+          class="p-text"
+          v-if="courseItems && courseItems[cid] && !courseItems[cid].useHTML"
+        >
+          {{
+            $t(courseItems && courseItems[cid] && courseItems[cid].description)
+          }}
+        </p>
+        <p v-else v-html="$t(courseItems[cid].description)"></p>
+      </div>
     </div>
-    <p
-      class="p-text"
-      v-if="courseItems && courseItems[cid] && !courseItems[cid].useHTML"
-    >
-      {{ $t(courseItems && courseItems[cid] && courseItems[cid].description) }}
-    </p>
-    <p v-else v-html="$t(courseItems[cid].description)"></p>
   </q-page>
 </template>
 
@@ -36,17 +42,7 @@ export default defineComponent({
   color: rgb(68, 68, 68);
   font-weight: bold;
   font-size: 35px;
-  margin: 20px;
-}
-#c-page {
-  background: linear-gradient(to bottom, #fff2c0, #ffd9d9);
-}
-.p-text {
-  background-color: #fcffed;
-  border-radius: 10px;
-  padding: 10px;
-  padding-top: 0px;
-  line-height: 35px;
-  box-shadow: 5px 5px 5px rgb(187, 187, 187);
+  margin: 0.6em 0;
+  text-align: center;
 }
 </style>

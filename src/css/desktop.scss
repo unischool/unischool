@@ -4,4 +4,13 @@
   .phone-only {
     display: none !important; /* hide on desktop */
   }
+  .p-text {
+    border-radius: 10px;
+    padding: 3em 2em;
+    max-width: 80vw;
+    box-shadow: 5px 5px 5px rgb(187, 187, 187);
+  }
+  #c-page {
+    padding-bottom: 1em;
+  }
 }
