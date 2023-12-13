@@ -1,6 +1,6 @@
 <template>
-  <q-page id ='c-page' class="flex flex-center" padding>
-    <div class="text-h6">
+  <q-page id ="c-page" class="flex flex-center" padding>
+    <div id="header" class="text-h6" >
       {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}
     </div>
     <p
@@ -32,13 +32,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.text-h6 {
+#header {
   color: rgb(68, 68, 68);
   font-weight: bold;
   font-size: 35px;
   margin: 20px;
 }
-*c-page{
+#c-page {
   background: linear-gradient(to bottom, #fff2c0, #ffd9d9);
 }
 .p-text {
