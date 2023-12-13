@@ -1,6 +1,18 @@
 // app global css in SCSS form
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap");
 
+.fluid {
+  width: 100%;
+}
+
+.flex-start-center {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+/* 可能要讀一下彈性盒子的用法 https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox */
+
 /*
 .q-header {
   background-color: #89a4fc;
