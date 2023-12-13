@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center" padding>
+  <q-page id ='c-page' class="flex flex-center" padding>
     <div class="text-h6">
       {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}
     </div>
@@ -38,7 +38,7 @@ export default defineComponent({
   font-size: 35px;
   margin: 20px;
 }
-.flex {
+*c-page{
   background: linear-gradient(to bottom, #fff2c0, #ffd9d9);
 }
 .p-text {
