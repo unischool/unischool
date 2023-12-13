@@ -1,5 +1,8 @@
 // app global css in SCSS form
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap");
+.q-header {
+  background-color: #89a4fc;
+}
 p {
   font-size: large;
   white-space: pre-wrap;
