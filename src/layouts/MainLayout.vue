@@ -9,7 +9,7 @@ q-layout(view="lHh Lpr lFf")
         q-badge.move-to-left(color="red", floating, size="lg") 0
     q-toolbar(inset)
       q-breadcrumbs(active-color="white", style="font-size: 16px")
-        q-breadcrumbs-el(label="Home", icon="home")
+        q-breadcrumbs-el(label="Home", icon="home" to="/")
         q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
   q-drawer(v-model="leftDrawerOpen", show-if-above, bordered)
     q-list
@@ -155,12 +155,15 @@ export default defineComponent({
       route,
       path,
       trans(str) {
-        if (str === "admin") return "admin";
-        let cid = str.replace(/class\//, "");
-        // Regular Expression
-        let ans = this.courseItems[cid];
-        // console.log(this.$t(ans.title));
-        return ans.title;
+        if (str.match(/class\//)) {
+          let cid = str.replace(/class\//, "");
+          // Regular Expression
+          let ans = this.courseItems[cid];
+          // console.log(this.$t(ans.title));
+          return ans.title;
+        } else {
+          return str;
+        }
       },
       tail(str) {
         return str.slice(1);

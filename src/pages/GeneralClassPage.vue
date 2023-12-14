@@ -1,5 +1,5 @@
 <template lang="pug">
-q-page#c-page.flex.flex-start-center
+q-page#c-page.flex.flex-col.flex-start-center.full-height
   .fluid.row
     q-tabs.fluid.bg-secondary.text-white.shadow-2(v-model="tab", dense, align="justify", :breakpoint="0")
       q-tab(name="info", icon="info")
@@ -11,8 +11,13 @@ q-page#c-page.flex.flex-start-center
         q-input(v-model="phone", :placeholder="$t('enter_your_phone')")
         q-input(v-model="email", :placeholder="$t('enter_your_email')")
         q-input(readonly, type="number", v-model="courseItems[cid].price")
-      q-btn.fluid(size="lg" color="primary", icon="arrow_back_ios", @click="tab='info'")
-        | {{$t('go_back')}} &nbsp;&nbsp;
+  .filler(v-show="tab == 'join'")
+  .row.fluid(v-if="courseItems[cid]", v-show="tab == 'join'")
+      q-btn-group.flex.flex-rwd.fluid
+        q-btn.fluid(size="lg" color="primary", icon="arrow_back_ios", @click="tab='info'")
+          | {{$t('go_back')}} &nbsp;&nbsp;
+        q-btn.fluid(size="lg" color="positive", icon-right="shopping_cart", to="/cart")
+          | {{$t('add_to_cart')}} &nbsp;&nbsp;
   .row(v-show="tab == 'info'")
     .col-12
       #header.text-h6 {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}

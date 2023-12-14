@@ -41,6 +41,21 @@ label {
   white-space: pre-wrap;
 }
 
+.flex-col {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filler {
+  flex: 1;
+}
+
+.full-height {
+  height: 100%;
+}
+
 .text-center {
   text-align: center;
 }
