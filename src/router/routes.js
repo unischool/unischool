@@ -11,6 +11,10 @@ const routes = [
         component: () => import("pages/GeneralClassPage.vue"),
       },
       {
+        path: "cart",
+        component: () => import("pages/CartPage.vue"),
+      },
+      {
         path: "admin",
         component: () => import("pages/AdminPage.vue"),
       },
