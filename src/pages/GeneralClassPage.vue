@@ -12,8 +12,8 @@ q-page#c-page.flex.flex-start-center
         q-input(v-model="email", :placeholder="$t('enter_your_email')")
         q-input(type="number", v-model="price")
       .row
-        .col-6
-          q-btn.fluid(size="lg" color="negative", icon="arrow_back_ios", @click="tab='info'")
+        .col-5
+          q-btn.fluid.backbtn(size="lg" color="negative", icon="arrow_back_ios", @click="tab='info'")
             | {{$t('goback')}} &nbsp;&nbsp;
           .col-6
   .row(v-show="tab == 'info'")
@@ -61,5 +61,14 @@ export default defineComponent({
   font-size: 35px;
   margin: 0.6em 0;
   text-align: center;
+}
+.padding {
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 5px rgb(187, 187, 187);
+}
+.backbtn {
+  margin-left: 15px;
 }
 </style>
