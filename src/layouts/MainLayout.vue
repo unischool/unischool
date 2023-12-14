@@ -147,7 +147,7 @@ export default defineComponent({
       essentialLinks: linksList,
       courseItems: courseItems,
       uid: ref(""), // 如果uid存在，代表已登錄後
-      leftDrawerOpen: ref(false),
+      leftDrawerOpen: leftDrawerOpen,
       showLoginComponent: showLoginComponent, // 如果showLoginComponent為真，代表要顯示登錄組件
       route,
       path,
