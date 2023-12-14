@@ -20,7 +20,7 @@ q-page#c-page.flex.flex-start-center
         | {{
         | $t(courseItems && courseItems[cid] && courseItems[cid].description)
         | }}
-      p(v-else, v-html="$t(courseItems[cid].description)")
+      p.p-text(v-else, v-html="$t(courseItems[cid].description)")
       .row
         .col-12
           q-btn.fluid(size="lg" color="positive", icon-right="send", @click="tab='join'")
