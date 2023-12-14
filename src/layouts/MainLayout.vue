@@ -7,7 +7,6 @@ q-layout(view="lHh Lpr lFf")
       q-btn(flat, color="white", @click="openCart")
         q-icon(size="md", name="shopping_cart")
         q-badge.move-to-left(color="red", floating, size="lg") 0
-      q-btn(color="white", flat, dense, round, size="xl", icon="account_circle", @click="tryLogin")
     q-toolbar(inset)
       q-breadcrumbs(active-color="white", style="font-size: 16px")
         q-breadcrumbs-el(label="Home", icon="home")
@@ -32,7 +31,7 @@ q-layout(view="lHh Lpr lFf")
       q-item-label(header) Essential Links
       EssentialLink(v-for="link in essentialLinks", :key="link.title", v-bind="link")
   q-page-container
-    router-view(:courseItems="courseItems")
+    router-view(:courseItems="courseItems", @try-login="tryLogin")
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
 </template>
 
@@ -153,10 +152,10 @@ export default defineComponent({
       route,
       path,
       trans(str) {
+        if (str === "admin") return "admin";
         let cid = str.replace(/class\//, "");
         // Regular Expression
         let ans = this.courseItems[cid];
-
         // console.log(this.$t(ans.title));
         return ans.title;
       },
