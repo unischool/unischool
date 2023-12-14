@@ -1,9 +1,11 @@
+import IndexPage from "pages/IndexPage.vue";
+
 const routes = [
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
+      { path: "", component: IndexPage },
       {
         path: "class/:cid",
         component: () => import("pages/GeneralClassPage.vue"),
