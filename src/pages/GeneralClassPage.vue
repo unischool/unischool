@@ -33,7 +33,13 @@ import { useRoute } from "vue-router";
 
 export default defineComponent({
   name: "IndexPage",
-  props: ["courseItems"],
+  props: {
+    courseItems: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
+  },
   setup() {
     const route = useRoute();
     const cid = computed(() => route.params.cid);
