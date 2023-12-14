@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="login-box">
     <h1>Login</h1>
-    <form @submit.prevent="login">
+    <q-form @submit.prevent="login">
       <div>
         <label for="username">Username:</label>
         <input type="text" id="username" v-model="username" />
@@ -10,8 +10,8 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" />
       </div>
-      <button type="submit">Login</button>
-    </form>
+      <q-btn type="submit">Login</q-btn>
+    </q-form>
     <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
   </div>
 </template>
@@ -51,3 +51,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>
