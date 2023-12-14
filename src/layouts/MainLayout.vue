@@ -1,92 +1,39 @@
-<template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title> {{ $t("title") }} </q-toolbar-title>
-
-        <!-- <div>{{ $t("subtitle") }}</div>-->
-        <q-btn flat color="white" @click="openCart">
-          <q-icon size="md" name="shopping_cart" />
-          <q-badge class="move-to-left" color="red" floating size="lg">
-            0
-          </q-badge>
-        </q-btn>
-        <q-btn
-          color="white"
-          flat
-          dense
-          round
-          size="xl"
-          icon="account_circle"
-          @click="tryLogin"
-        ></q-btn>
-      </q-toolbar>
-
-      <q-toolbar inset>
-        <q-breadcrumbs active-color="white" style="font-size: 16px">
-          <q-breadcrumbs-el label="Home" icon="home" />
-          <q-breadcrumbs-el v-if="tail(path)" :label="$t(trans(tail(path)))" />
-        </q-breadcrumbs>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item clickable to="/">
-          <q-item-section avatar>
-            <q-icon name="home" />
-          </q-item-section>
-
-          <q-item-section>
-            <q-item-label>Home</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item-label header> 剛做好的動態路由 </q-item-label>
-
-        <q-item
-          clickable
-          v-for="c in Object.values(courseItems)"
-          :key="c.id"
-          :to="'/class/' + c.id"
-        >
-          <q-item-section v-if="c.icon" avatar>
-            <q-icon :name="c.icon" />
-          </q-item-section>
-
-          <q-item-section>
-            <q-item-label>{{ $t(c.title) }}</q-item-label>
-            <q-item-label caption v-if="c.caption">{{
-              $t(c.caption)
-            }}</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view :courseItems="courseItems" />
-    </q-page-container>
-
-    <Login v-if="showLoginComponent" @cancel-login="cancelLogin" />
-  </q-layout>
+<template lang="pug">
+q-layout(view="lHh Lpr lFf")
+  q-header(elevated)
+    q-toolbar
+      q-btn(flat, dense, round, icon="menu", aria-label="Menu", @click="toggleLeftDrawer")
+      q-toolbar-title {{ $t(&quot;title&quot;) }}
+      q-btn(flat, color="white", @click="openCart")
+        q-icon(size="md", name="shopping_cart")
+        q-badge.move-to-left(color="red", floating, size="lg") 0
+      q-btn(color="white", flat, dense, round, size="xl", icon="account_circle", @click="tryLogin")
+    q-toolbar(inset)
+      q-breadcrumbs(active-color="white", style="font-size: 16px")
+        q-breadcrumbs-el(label="Home", icon="home")
+        q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
+  q-drawer(v-model="leftDrawerOpen", show-if-above, bordered)
+    q-list
+      q-item(clickable, to="/")
+        q-item-section(avatar)
+          q-icon(name="home")
+        q-item-section
+          q-item-label Home
+      q-item-label(header) 剛做好的動態路由
+      q-item(clickable, v-for="c in Object.values(courseItems)", :key="c.id", :to="'/class/' + c.id")
+        q-item-section(v-if="c.icon", avatar)
+          q-icon(:name="c.icon")
+        q-item-section
+          q-item-label {{ $t(c.title) }}
+          q-item-label(caption, v-if="c.caption")
+            | {{
+            | $t(c.caption)
+            | }}
+      q-item-label(header) Essential Links
+      EssentialLink(v-for="link in essentialLinks", :key="link.title", v-bind="link")
+  q-page-container
+    router-view(:courseItems="courseItems")
+  Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
 </template>
 
 <script>

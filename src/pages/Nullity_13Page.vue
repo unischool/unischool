@@ -1,14 +1,8 @@
-<template>
-  <q-page class="flex flex-center" padding>
-    <div class="text-h6">{{ $t(courseItems[cid].title) }}</div>
-    <p
-      v-html="$t(courseItems[cid].description)"
-      v-if="courseItems[cid].useHTML"
-    ></p>
-    <p v-else>
-      {{ $t(courseItems[cid].description) }}
-    </p>
-  </q-page>
+<template lang="pug">
+q-page.flex.flex-center(padding)
+  .text-h6 {{ $t(courseItems[cid].title) }}
+  p(v-html="$t(courseItems[cid].description)",v-if="courseItems[cid].useHTML")
+  p(v-else) {{ $t(courseItems[cid].description) }}
 </template>
 
 <script>
