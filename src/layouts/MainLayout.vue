@@ -84,6 +84,8 @@
     <q-page-container>
       <router-view :courseItems="courseItems" />
     </q-page-container>
+
+    <Login v-if="!showLoginComponent" />
   </q-layout>
 </template>
 
@@ -91,6 +93,7 @@
 import { useRoute } from "vue-router";
 import { defineComponent, ref, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import { uid } from "quasar";
 
 const linksList = [
   {
@@ -116,18 +119,6 @@ const linksList = [
     caption: "forum.quasar.dev",
     icon: "record_voice_over",
     link: "https://forum.quasar.dev",
-  },
-  {
-    title: "Twitter",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "https://twitter.quasar.dev",
-  },
-  {
-    title: "Facebook",
-    caption: "@QuasarFramework",
-    icon: "public",
-    link: "https://facebook.quasar.dev",
   },
   {
     title: "Quasar Awesome",
@@ -199,15 +190,13 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const path = computed(() => route.path);
-    const leftDrawerOpen = ref(false);
-    const showLoginComponent = ref(false);
-
+    const path = computed(()
     return {
       essentialLinks: linksList,
       courseItems: courseItems,
-      leftDrawerOpen,
-      showLoginComponent,
+      uid: ref(""), // 如果uid存在，代表已登錄後
+      leftDrawerOpen: ref(false),
+      showLoginComponent: ref(false), // 如果showLoginComponent為真，代表要顯示登錄組件
       route,
       path,
       trans(str) {
@@ -227,7 +216,6 @@ export default defineComponent({
       tryLogin() {
         showLoginComponent.value = true;
         window.scrollTo(0, 0);
-        window.alert("建構中...");
       },
       openCart() {
         window.alert("建構中...");
