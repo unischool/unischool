@@ -85,7 +85,7 @@
       <router-view :courseItems="courseItems" />
     </q-page-container>
 
-    <Login v-if="!showLoginComponent" />
+    <Login v-if="showLoginComponent" @cancel-login="cancelLogin" />
   </q-layout>
 </template>
 
@@ -93,6 +93,7 @@
 import { useRoute } from "vue-router";
 import { defineComponent, ref, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import Login from "components/Login.vue";
 import { uid } from "quasar";
 
 const linksList = [
@@ -186,17 +187,22 @@ export default defineComponent({
 
   components: {
     EssentialLink,
+    Login,
   },
 
   setup() {
     const route = useRoute();
-    const path = computed(()
+    const path = computed(() => route.path);
+
+    const leftDrawerOpen = ref(false);
+    const showLoginComponent = ref(false);
+
     return {
       essentialLinks: linksList,
       courseItems: courseItems,
       uid: ref(""), // 如果uid存在，代表已登錄後
       leftDrawerOpen: ref(false),
-      showLoginComponent: ref(false), // 如果showLoginComponent為真，代表要顯示登錄組件
+      showLoginComponent: showLoginComponent, // 如果showLoginComponent為真，代表要顯示登錄組件
       route,
       path,
       trans(str) {
@@ -216,6 +222,10 @@ export default defineComponent({
       tryLogin() {
         showLoginComponent.value = true;
         window.scrollTo(0, 0);
+      },
+      cancelLogin() {
+        console.log("cancelLogin");
+        showLoginComponent.value = false;
       },
       openCart() {
         window.alert("建構中...");

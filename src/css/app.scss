@@ -1,6 +1,15 @@
 // app global css in SCSS form
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap");
 
+a,
+button {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .fluid {
   width: 100%;
 }
@@ -11,12 +20,12 @@
   align-items: flex-start;
 }
 
-/* 可能要讀一下彈性盒子的用法 https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox */
+.rwd-flexbox {
+  display: flex;
+  flex-direction: column;
+}
 
-/*
-.q-header {
-  background-color: #89a4fc;
-} */
+/* 可能要讀一下彈性盒子的用法 https://developer.mozilla.org/zh-TW/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox */
 
 /* 如果是要動全部的上方底色，請改quasar.variables.scss /
 
@@ -26,9 +35,14 @@
 /* 可以安裝Lighthouse 這個Chrome Extension來做檢測對比  */
 /* https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=zh-TW&pli=1 */
 
-p {
+p,
+label {
   font-size: large;
   white-space: pre-wrap;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .q-item {
@@ -59,4 +73,9 @@ p {
 
 .padding {
   padding: 1.62em;
+}
+
+.small-space {
+  display: flex;
+  height: 3em;
 }

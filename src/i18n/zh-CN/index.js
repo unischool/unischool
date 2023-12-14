@@ -10,6 +10,7 @@ export default {
   enter_your_name: "请输入您的大名",
   enter_your_phone: "请输入您的电话",
   enter_your_email: "请输入您的邮箱",
+  Login: "登录",
   ...Death_And_Life,
   ...Nullity_13,
   ...Life_Art_Elem,

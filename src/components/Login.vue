@@ -1,19 +1,23 @@
-<template>
-  <div id="login-box">
-    <h1>Login</h1>
-    <q-form @submit.prevent="login">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" />
-      </div>
-      <q-btn type="submit">Login</q-btn>
-    </q-form>
-    <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
-  </div>
+<template lang="pug">
+#login-box-container
+  q-btn#cancel-login(size="xl" @click="$emit('cancel-login')", icon="close", flat, round, dense)
+  .row.flex.flex-center.fluid
+    .rwd-flexbox.flex-start-center
+      h2.fluid.text-center.bold {{$t('Login')}}
+      q-form(@submit.prevent="login")
+        div
+          label(for="username") Username:
+          input#username(type="text", v-model="username")
+        div
+          label(for="password") Password:
+          input#password(type="password", v-model="password")
+        .small-space
+        .flex.flex-center
+          q-btn-group.flex.flex-center(push)
+            q-btn(push, type="submit", color="primary") Login
+            q-btn(push, color="secondary") Register
+      p(v-if="errorMessage", style="color: red") {{ errorMessage }}
+
 </template>
 
 <script>
@@ -52,4 +56,29 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#cancel-login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: red;
+}
+
+#login-box-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999 !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(199, 199, 199, 0.82);
+}
+</style>
