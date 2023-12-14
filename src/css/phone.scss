@@ -4,4 +4,7 @@
   .desktop-only {
     display: none !important; /* hide on phone */
   }
+  .flex-rwd-reverse {
+    flex-direction: column-reverse;
+  }
 }

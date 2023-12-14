@@ -2,7 +2,7 @@
 #login-box-container
   q-btn#cancel-login(size="xl" @click="$emit('cancel-login')", icon="close", flat, round, dense)
   .row.flex.flex-center.fluid
-    .rwd-flexbox.flex-start-center
+    .flex-rwd.flex-start-center
       h2.fluid.text-center.bold {{$t('Login')}}
       q-form(@submit.prevent="login")
         div
