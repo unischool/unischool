@@ -84,6 +84,7 @@ const courseItems = ref({
     description: "Death_And_Life_Description",
     icon: "school",
     link: "/death_and_life",
+    price: 450,
     prices: {
       full: 450,
       half: 350,
@@ -101,6 +102,7 @@ const courseItems = ref({
     description: "Nullity_13_Description",
     icon: "school",
     link: "/nullity_13",
+    price: 450,
     prices: {
       full: 450,
       half: 350,
@@ -118,6 +120,7 @@ const courseItems = ref({
     description: "Life_Art_Elem_Description",
     icon: "school",
     link: "/life_art_elem",
+    price: 450,
     prices: {
       full: 450,
       half: 350,

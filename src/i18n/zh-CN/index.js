@@ -8,6 +8,8 @@ export default {
   title: "至青宇宙学校",
   subtitle: "(建构中...)",
   admin: "管理员",
+  join_us: "加入我们",
+  go_back: "返回",
   enter_your_name: "请输入您的大名",
   enter_your_phone: "请输入您的电话",
   enter_your_email: "请输入您的邮箱",
