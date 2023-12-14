@@ -11,11 +11,8 @@ q-page#c-page.flex.flex-start-center
         q-input(v-model="phone", :placeholder="$t('enter_your_phone')")
         q-input(v-model="email", :placeholder="$t('enter_your_email')")
         q-input(type="number", v-model="price")
-      .row
-        .col-5
-          q-btn.fluid.backbtn(size="lg" color="negative", icon="arrow_back_ios", @click="tab='info'")
-            | {{$t('goback')}} &nbsp;&nbsp;
-          .col-6
+      q-btn.fluid(size="lg" color="primary", icon="arrow_back_ios", @click="tab='info'")
+        | {{$t('goback')}} &nbsp;&nbsp;
   .row(v-show="tab == 'info'")
     .col-12
       #header.text-h6 {{ $t(courseItems &amp;&amp; courseItems[cid] &amp;&amp; courseItems[cid].title) }}
@@ -25,10 +22,9 @@ q-page#c-page.flex.flex-start-center
         | }}
       p(v-else, v-html="$t(courseItems[cid].description)")
       .row
-          .col-8
-          .col-4
-            q-btn.fluid(size="lg" color="positive", icon-right="send", @click="tab='join'")
-             | {{$t('join')}} &nbsp;&nbsp;
+        .col-12
+          q-btn.fluid(size="lg" color="positive", icon-right="send", @click="tab='join'")
+            | {{$t('join')}} &nbsp;&nbsp;
 </template>
 
 <script>
@@ -67,8 +63,5 @@ export default defineComponent({
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 5px 5px 5px rgb(187, 187, 187);
-}
-.backbtn {
-  margin-left: 15px;
 }
 </style>

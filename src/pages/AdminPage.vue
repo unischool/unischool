@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page.flex.flex-start-center(padding)
-  q-btn(size="xl", icon="account_circle", @click="$emit('try-login')") Login
+  q-btn(color="positive", size="xl", icon="account_circle", @click="$emit('try-login')") Login
 </template>
 
 <script>
