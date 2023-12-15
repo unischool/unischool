@@ -7,10 +7,9 @@ q-layout(view="lHh Lpr lFf")
       q-btn(flat, color="white", @click="openCart")
         q-icon(size="md", name="shopping_cart")
         q-badge.move-to-left(color="red", floating, size="lg") 0
-    q-toolbar(inset)
-      q-breadcrumbs(active-color="white", style="font-size: 16px")
-        q-breadcrumbs-el(label="Home", icon="home" to="/")
-        q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
+    q-breadcrumbs.padding(active-color="white", style="font-size: 16px")
+      q-breadcrumbs-el(label="Home", icon="home" to="/")
+      q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
   q-drawer(v-model="leftDrawerOpen", show-if-above, bordered)
     q-list
       q-item(clickable, to="/")
