@@ -40,7 +40,7 @@ import { useRoute } from "vue-router";
 import { defineComponent, ref, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import Login from "components/Login.vue";
-import { uid } from "quasar";
+import { useMeta } from "quasar";
 
 const linksList = [
   {
@@ -140,6 +140,16 @@ export default defineComponent({
   },
 
   setup() {
+    // essentially acting as a computed property
+    useMeta(() => {
+      // compute or reference other stuff
+      // in your component
+      // then return:
+      return {
+        /* meta config */
+      };
+    });
+
     const route = useRoute();
     const path = computed(() => route.path);
 
