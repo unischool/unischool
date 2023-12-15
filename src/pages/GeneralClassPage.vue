@@ -19,7 +19,19 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
         .small-space
         q-select.required(rounded, outlined v-model="group" :options="group_options" :label="$t('enter_your_group')")
         .small-space
-        q-input.required(rounded, outlined, readonly, type="number", v-model="courseItems[cid].price")
+        .field(v-show="!useSpecialPrice")
+          label.text-weight-bold {{ $t('enter_your_price') }}
+            br
+            | (人民币¥ {{ courseItems[cid].min_price }} ~ {{ courseItems[cid].max_price }} 元)
+          q-input.required(rounded, outlined, type="number",
+            v-model="customPrice",
+            step="50",
+            :max="courseItems[cid].max_price",
+            :min="courseItems[cid].min_price",
+            :placeholder="$t('enter_your_price')")
+        .field(v-if="courseItems[cid].hasSpecialPrice")
+          q-checkbox(v-model="useSpecialPrice",
+            :label="$t('special_price') + '：' + Number(courseItems[cid].specialPrice) + '元'")
         .small-space
         q-input.optional(rounded, outlined, v-model="comment", :placeholder="$t('enter_your_comment')")
   .filler(v-show="tab == 'join'")
@@ -44,7 +56,7 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
 </template>
 
 <script>
-import { defineComponent, computed, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import { useMeta } from "quasar";
 import { useI18n } from "vue-i18n";
@@ -63,8 +75,8 @@ export default defineComponent({
     const route = useRoute();
     const cid = computed(() => route.params.cid);
     useMeta(() => {
-      console.log(cid.value);
-      console.log(props.courseItems[cid.value]);
+      // console.log(cid.value);
+      // console.log(props.courseItems[cid.value]);
       // compute or reference other stuff
       // in your component
       // then return:
@@ -87,7 +99,13 @@ export default defineComponent({
       wechat: ref(""),
       phone: ref(""),
       email: ref(""),
-      price: ref(1500),
+      useSpecialPrice: ref(false),
+      customPrice: ref(
+        (props.courseItems &&
+          props.courseItems[cid.value] &&
+          props.courseItems[cid.value].max_price) ||
+          350
+      ),
       address: ref(""),
       comment: ref(""),
       group: ref(""),
@@ -104,6 +122,15 @@ export default defineComponent({
         { label: "Group 10", value: "group10" },
       ]),
     };
+  },
+  watch: {
+    useSpecialPrice: function (bool) {
+      if (bool) {
+        this.customPrice = this.courseItems[this.cid].specialPrice;
+      } else {
+        this.customPrice = this.courseItems[this.cid].max_price;
+      }
+    },
   },
   methods: {},
 });
