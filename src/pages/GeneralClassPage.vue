@@ -47,6 +47,8 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
 <script>
 import { defineComponent, computed, ref } from "vue";
 import { useRoute } from "vue-router";
+import { useMeta } from "quasar";
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   name: "IndexPage",
@@ -57,9 +59,28 @@ export default defineComponent({
       default: () => ({}),
     },
   },
-  setup() {
+  setup(props) {
+    const { t } = useI18n();
     const route = useRoute();
     const cid = computed(() => route.params.cid);
+    useMeta(() => {
+      console.log(cid.value);
+      console.log(props.courseItems[cid.value]);
+      // compute or reference other stuff
+      // in your component
+      // then return:
+      if (!props.courseItems || !props.courseItems[cid.value]) {
+        return {
+          title: "至青宇宙学校",
+          /* meta config */
+        };
+      } else {
+        return {
+          title: "至青宇宙学校" + " - " + t(props.courseItems[cid.value].title),
+          /* meta config */
+        };
+      }
+    });
     return {
       cid,
       tab: ref("info"),
@@ -95,6 +116,7 @@ export default defineComponent({
   font-weight: bold;
   font-size: 35px;
   margin: 0.6em 0;
+  line-height: 1.62em;
   text-align: center;
 }
 .shadow {

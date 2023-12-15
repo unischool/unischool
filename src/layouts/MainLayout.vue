@@ -140,21 +140,22 @@ export default defineComponent({
   },
 
   setup() {
+    const route = useRoute();
+    const path = computed(() => route.path);
+
+    const leftDrawerOpen = ref(false);
+    const showLoginComponent = ref(false);
+
     // essentially acting as a computed property
     useMeta(() => {
       // compute or reference other stuff
       // in your component
       // then return:
       return {
+        title: "至青宇宙学校",
         /* meta config */
       };
     });
-
-    const route = useRoute();
-    const path = computed(() => route.path);
-
-    const leftDrawerOpen = ref(false);
-    const showLoginComponent = ref(false);
 
     return {
       essentialLinks: linksList,
