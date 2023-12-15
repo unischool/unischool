@@ -35,6 +35,10 @@ button {
 /* 可以安裝Lighthouse 這個Chrome Extension來做檢測對比  */
 /* https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=zh-TW&pli=1 */
 
+.q-breadcrumbs__el {
+  font-size: larger;
+}
+
 p,
 label {
   font-size: large;
@@ -79,7 +83,7 @@ label {
 
 #c-page {
   padding: 0;
-  background: linear-gradient(to bottom, #fff2c0, #ffd9d9);
+  background: #f5f5f5;
 }
 
 .text-white {

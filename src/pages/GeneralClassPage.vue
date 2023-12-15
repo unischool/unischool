@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page#c-page.flex.flex-col.flex-start-center.full-height
   .fluid.row
-    q-tabs.fluid.bg-secondary.text-white.shadow-2(v-model="tab", dense, align="justify", :breakpoint="0")
+    q-tabs.fluid.bg-secondary.shadow-2(v-model="tab", dense, align="justify", :breakpoint="0")
       q-tab(name="info", icon="info")
       q-tab(name="join", icon="shopping_cart")
   .row.fluid(v-if="courseItems[cid]", v-show="tab == 'join'")
@@ -14,9 +14,9 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
   .filler(v-show="tab == 'join'")
   .row.fluid(v-if="courseItems[cid]", v-show="tab == 'join'")
       q-btn-group.flex.flex-rwd.flex-rwd-reverse.fluid
-        q-btn.fluid(size="lg" color="primary", icon="arrow_back_ios", @click="tab='info'")
+        q-btn.fluid(size="lg" inversed  color="primary", icon="arrow_back_ios", @click="tab='info'")
           | {{$t('go_back')}} &nbsp;&nbsp;
-        q-btn.fluid(size="lg" color="positive", icon-right="shopping_cart", to="/cart")
+        q-btn.fluid(size="lg" inversed color="accent", icon-right="shopping_cart", to="/cart")
           | {{$t('add_to_cart')}} &nbsp;&nbsp;
   .filler(v-show="tab == 'info'")
   .row(v-show="tab == 'info'")
