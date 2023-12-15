@@ -28,52 +28,25 @@ q-layout(view="lHh Lpr lFf")
             | {{
             | $t(c.caption)
             | }}
-      q-item-label(header) Essential Links
-      EssentialLink(v-for="link in essentialLinks", :key="link.title", v-bind="link")
   q-page-container
     router-view(:courseItems="courseItems", @try-login="tryLogin")
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
+  q-footer
+    q-toolbar.text-center
+      q-toolbar-title
+        // | {{ $t('service_email:') }} &nbsp;&nbsp;
+        a.text-white(href="mailto:" + serviceEmail) {{ serviceEmail }}
+        | &nbsp;&nbsp; {{ $t('course_team') }}
+
 </template>
 
 <script>
 import { useRoute } from "vue-router";
 import { defineComponent, ref, computed } from "vue";
-import EssentialLink from "components/EssentialLink.vue";
 import Login from "components/Login.vue";
 import { useMeta } from "quasar";
 
-const linksList = [
-  {
-    title: "Docs",
-    caption: "quasar.dev",
-    icon: "school",
-    link: "https://quasar.dev",
-  },
-  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-  {
-    title: "Forum",
-    caption: "forum.quasar.dev",
-    icon: "record_voice_over",
-    link: "https://forum.quasar.dev",
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
-  },
-];
+const serviceEmail = "service@chihching.org";
 
 const courseItems = ref({
   death_and_life: {
@@ -98,7 +71,6 @@ const courseItems = ref({
     isOpen: true,
     title: "Nullity_13",
     caption: "Nullity_13_Caption",
-    useHTML: true,
     description: "Nullity_13_Description",
     icon: "school",
     link: "/nullity_13",
@@ -116,7 +88,6 @@ const courseItems = ref({
     isOpen: false,
     title: "Life_Art_Elem",
     caption: "Life_Art_Elem_Caption",
-    useHTML: true,
     description: "Life_Art_Elem_Description",
     icon: "school",
     link: "/life_art_elem",
@@ -135,7 +106,6 @@ export default defineComponent({
   name: "MainLayout",
 
   components: {
-    EssentialLink,
     Login,
   },
 
@@ -158,7 +128,7 @@ export default defineComponent({
     });
 
     return {
-      essentialLinks: linksList,
+      serviceEmail: serviceEmail,
       courseItems: courseItems,
       uid: ref(""), // 如果uid存在，代表已登錄後
       leftDrawerOpen: leftDrawerOpen,

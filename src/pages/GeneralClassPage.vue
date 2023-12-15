@@ -33,11 +33,10 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
   .row(v-show="tab == 'info'")
     .col-12
       #header.text-h6 {{ $t(courseItems && courseItems[cid] && courseItems[cid].title) }}
-      p.p-text(v-if="courseItems && courseItems[cid] && !courseItems[cid].useHTML")
+      p.p-text
         | {{
         | $t(courseItems && courseItems[cid] && courseItems[cid].description)
         | }}
-      p.p-text(v-else, v-html="$t(courseItems[cid].description)")
       .row
         .col-12
           q-btn.fluid(size="lg" color="positive", icon-right="send", @click="tab='join'")

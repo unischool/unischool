@@ -65,7 +65,7 @@ export default {
   3、全程参加课程；
   4、根据自己的经济情况，随喜费用！(1块钱以上也可以)
   5、课程组审核！
-  ▷ 课程咨询信箱:<a href="service{'@'}chihching.org">service{'@'}chihching.org</a> / 课务组
+  ▷ 课程咨询信箱:见网页底部 / 课务组
   ★温馨提醒
   1、参加课程的学员，请遵守课程规定：
   （1）请提前下载Zoom会议APP；
