@@ -14,6 +14,10 @@ export default {
   enter_your_name: "请输入您的大名",
   enter_your_phone: "请输入您的电话",
   enter_your_email: "请输入您的邮箱",
+  enter_your_address: "请输入您的地址",
+  enter_your_group: "请输入您所屬的群组", // 之後再翻簡体
+  enter_your_wechat: "请输入您的微信", // 之後再翻簡体
+  enter_your_comment: "请输入您的備註", // 之後再翻簡体
   Login: "登录",
   ...Death_And_Life,
   ...Nullity_13,

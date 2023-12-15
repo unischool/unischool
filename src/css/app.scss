@@ -1,6 +1,17 @@
 // app global css in SCSS form
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap");
 
+.q-tab__icon {
+  font-size: 2.5rem;
+  margin: 0.6em 0;
+}
+
+.q-placeholder {
+  color: #000000;
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
+}
+
 a,
 button {
   cursor: pointer;
@@ -34,6 +45,10 @@ button {
 
 /* 可以安裝Lighthouse 這個Chrome Extension來做檢測對比  */
 /* https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=zh-TW&pli=1 */
+
+.q-field--outlined.q-field--rounded .q-field__control {
+  border-radius: 0.62em !important;
+}
 
 .q-breadcrumbs__el {
   font-size: larger;
@@ -74,7 +89,7 @@ label {
 }
 
 .p-text {
-  background-color: #fcffed;
+  background-color: #fff;
   line-height: 1.6em;
   padding: 0.5em 1.6em;
   margin-block-end: 0;
@@ -96,5 +111,5 @@ label {
 
 .small-space {
   display: flex;
-  height: 3em;
+  height: 0.5rem;
 }

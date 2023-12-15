@@ -2,15 +2,26 @@
 q-page#c-page.flex.flex-col.flex-start-center.full-height
   .fluid.row
     q-tabs.fluid.bg-secondary.shadow-2(v-model="tab", dense, align="justify", :breakpoint="0")
-      q-tab(name="info", icon="info")
-      q-tab(name="join", icon="shopping_cart")
+      q-tab.text-accent.bigger(name="info", icon="info")
+      q-tab.text-primary(name="join", icon="shopping_cart")
   .row.fluid(v-if="courseItems[cid]", v-show="tab == 'join'")
     .col-12
-      q-form.padding
-        q-input(v-model="name", :placeholder="$t('enter_your_name')")
-        q-input(v-model="phone", :placeholder="$t('enter_your_phone')")
-        q-input(v-model="email", :placeholder="$t('enter_your_email')")
-        q-input(readonly, type="number", v-model="courseItems[cid].price")
+      q-form.padding.shadow
+        q-input.required(rounded, outlined, v-model="name", :placeholder="$t('enter_your_name')")
+        .small-space
+        q-input.required(rounded, outlined, v-model="wechat", :placeholder="$t('enter_your_wechat')")
+        .small-space
+        q-input.required(rounded, outlined, v-model="phone", :placeholder="$t('enter_your_phone')")
+        .small-space
+        q-input.optional(rounded, outlined, v-model="email", :placeholder="$t('enter_your_email')")
+        .small-space
+        q-input.optional(rounded, outlined, v-model="address", :placeholder="$t('enter_your_address')")
+        .small-space
+        q-select.required(rounded, outlined v-model="group" :options="group_options" :label="$t('enter_your_group')")
+        .small-space
+        q-input.required(rounded, outlined, readonly, type="number", v-model="courseItems[cid].price")
+        .small-space
+        q-input.optional(rounded, outlined, v-model="comment", :placeholder="$t('enter_your_comment')")
   .filler(v-show="tab == 'join'")
   .row.fluid(v-if="courseItems[cid]", v-show="tab == 'join'")
       q-btn-group.flex.flex-rwd.flex-rwd-reverse.fluid
@@ -53,9 +64,25 @@ export default defineComponent({
       cid,
       tab: ref("info"),
       name: ref(""),
+      wechat: ref(""),
       phone: ref(""),
       email: ref(""),
       price: ref(1500),
+      address: ref(""),
+      comment: ref(""),
+      group: ref(""),
+      group_options: ref([
+        { label: "Group 1", value: "group1" },
+        { label: "Group 2", value: "group2" },
+        { label: "Group 3", value: "group3" },
+        { label: "Group 4", value: "group4" },
+        { label: "Group 5", value: "group5" },
+        { label: "Group 6", value: "group6" },
+        { label: "Group 7", value: "group7" },
+        { label: "Group 8", value: "group8" },
+        { label: "Group 9", value: "group9" },
+        { label: "Group 10", value: "group10" },
+      ]),
     };
   },
   methods: {},
@@ -70,9 +97,13 @@ export default defineComponent({
   margin: 0.6em 0;
   text-align: center;
 }
-.padding {
+.shadow {
   background-color: white;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   box-shadow: 5px 5px 5px rgb(187, 187, 187);
+}
+
+.bigger {
+  font-size: 3rem !important;
 }
 </style>
