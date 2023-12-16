@@ -43,15 +43,25 @@ q-layout(view="lHh Lpr lFf")
 </template>
 
 <script>
+// 引入 vue-router 的 useRoute 函數，用於獲取當前路由信息
 import { useRoute } from "vue-router";
+
+// 引入 Vue 的核心功能
 import { defineComponent, ref, computed } from "vue";
+
+// 引入 Login 組件
 import Login from "components/Login.vue";
+
+// 引入 Quasar 框架的 useMeta 函數，用於設置頁面元數據
 import { useMeta } from "quasar";
 
+// 定義一個常量，用於存儲服務郵箱地址
 const serviceEmail = "service@chihching.org";
 
+// 使用 ref 創建一個響應式數據 cartItems，用於存儲購物車項目
 const cartItems = ref([]); // [ {cid: "death_and_life", price: 250, count: 1}, ...
 
+// 使用 ref 創建一個響應式數據 courseItems，用於存儲課程項目
 const courseItems = ref({
   death_and_life: {
     id: "death_and_life",
