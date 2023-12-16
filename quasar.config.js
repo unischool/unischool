@@ -1,39 +1,45 @@
 /* eslint-env node */
 
 /*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
+ * 這個文件在 Node 環境中運行（不會被 Babel 轉譯），所以只能使用你的 Node 版本支持的 ES6 功能。
+ * 有關支持情況，可以參考 https://node.green/
  */
 
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
+// 導入 Quasar 框架的配置函數和 Node 的 path 模塊
 const { configure } = require("quasar/wrappers");
 const path = require("path");
 
+// 導出配置信息
 module.exports = configure(function (/* ctx */) {
   return {
+    // ESLint 配置選項
     eslint: {
+      // 是否自動修復代碼問題
       // fix: true,
+      // 包含的文件或目錄
       // include: [],
+      // 排除的文件或目錄
       // exclude: [],
+      // 自定義 ESLint 選項
       // rawOptions: {},
+      // 啟用警告信息
       warnings: true,
+      // 啟用錯誤信息
       errors: true,
     },
 
-    // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
+    // 預加載功能的配置
     // preFetch: true,
 
-    // app boot file (/src/boot)
-    // --> boot files are part of "main.js"
-    // https://v2.quasar.dev/quasar-cli-vite/boot-files
+    // 應用程序啟動文件的配置，位於 /src/boot 目錄
     boot: ["i18n"],
 
-    // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
+    // 應用程序的全局 SCSS 樣式文件
     css: ["app.scss", "phone.scss", "desktop.scss"],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
+
+    // 需要使用的 Quasar 組件
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
@@ -48,6 +54,8 @@ module.exports = configure(function (/* ctx */) {
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
+
+    // 構建配置
     build: {
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
