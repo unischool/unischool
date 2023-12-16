@@ -23,6 +23,7 @@ export default {
   enter_your_price: "请输入您願意支付的价格",
   special_price: "困难者特别价格",
   Login: "登录",
+  cart: "购物车",
   ...Death_And_Life,
   ...Nullity_13,
   ...Life_Art_Elem,
