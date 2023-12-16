@@ -28,7 +28,10 @@ q-layout(view="lHh Lpr lFf")
             | $t(c.caption)
             | }}
   q-page-container
-    router-view(:courseItems="courseItems", @try-login="tryLogin")
+    router-view(
+      :courseItems="courseItems",
+      :cartItems="cartItems",
+      @try-login="tryLogin")
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
   q-footer
     q-toolbar.text-center
@@ -47,6 +50,8 @@ import { useMeta } from "quasar";
 
 const serviceEmail = "service@chihching.org";
 
+const cartItems = ref([]); // [ {cid: "death_and_life", price: 250, count: 1}, ...
+
 const courseItems = ref({
   death_and_life: {
     id: "death_and_life",
@@ -56,14 +61,10 @@ const courseItems = ref({
     description: "Death_And_Life_Description",
     icon: "school",
     link: "/death_and_life",
-    price: 450,
-    prices: {
-      full: 450,
-      half: 350,
-      friend: 350,
-      senior: 250,
-      special: 1,
-    },
+    max_price: 450,
+    min_price: 250,
+    specialPrice: 1,
+    hasSpecialPrice: true,
   },
   nullity_13: {
     id: "nullity_13",
@@ -73,14 +74,10 @@ const courseItems = ref({
     description: "Nullity_13_Description",
     icon: "school",
     link: "/nullity_13",
-    price: 450,
-    prices: {
-      full: 450,
-      half: 350,
-      friend: 350,
-      senior: 250,
-      special: 1,
-    },
+    max_price: 450,
+    min_price: 250,
+    specialPrice: 1,
+    hasSpecialPrice: true,
   },
   life_art_elem: {
     id: "life_art_elem",
@@ -90,14 +87,9 @@ const courseItems = ref({
     description: "Life_Art_Elem_Description",
     icon: "school",
     link: "/life_art_elem",
-    price: 450,
-    prices: {
-      full: 450,
-      half: 350,
-      friend: 350,
-      senior: 250,
-      special: 1,
-    },
+    max_price: 450,
+    min_price: 250,
+    hasSpecialPrice: false,
   },
 });
 
@@ -129,6 +121,7 @@ export default defineComponent({
     return {
       serviceEmail: serviceEmail,
       courseItems: courseItems,
+      cartItems: cartItems,
       uid: ref(""), // 如果uid存在，代表已登錄後
       leftDrawerOpen: leftDrawerOpen,
       showLoginComponent: showLoginComponent, // 如果showLoginComponent為真，代表要顯示登錄組件
