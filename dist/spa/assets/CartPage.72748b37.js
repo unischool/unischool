@@ -1,1 +1,0 @@
-import{_ as t,k as e,a0 as r,aq as s}from"./index.3b394d29.js";import{u as o}from"./use-meta.8a333be9.js";import{u as n}from"./vue-i18n.runtime.c8df8945.js";const c={name:"CartPage",setup(){const{t:a}=n();o(()=>({title:"\u81F3\u9752\u5B87\u5B99\u5B66\u6821 - "+a("cart")}))}};function p(a,u,_,f,i,m){return e(),r(s,{padding:""})}var $=t(c,[["render",p]]);export{$ as default};
