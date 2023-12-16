@@ -28,7 +28,10 @@ q-layout(view="lHh Lpr lFf")
             | $t(c.caption)
             | }}
   q-page-container
-    router-view(:courseItems="courseItems", @try-login="tryLogin")
+    router-view(
+      :courseItems="courseItems",
+      :cartItems="cartItems",
+      @try-login="tryLogin")
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
   q-footer
     q-toolbar.text-center
@@ -46,6 +49,8 @@ import Login from "components/Login.vue";
 import { useMeta } from "quasar";
 
 const serviceEmail = "service@chihching.org";
+
+const cartItems = ref([]); // [ {cid: "death_and_life", price: 250, count: 1}, ...
 
 const courseItems = ref({
   death_and_life: {
@@ -116,6 +121,7 @@ export default defineComponent({
     return {
       serviceEmail: serviceEmail,
       courseItems: courseItems,
+      cartItems: cartItems,
       uid: ref(""), // 如果uid存在，代表已登錄後
       leftDrawerOpen: leftDrawerOpen,
       showLoginComponent: showLoginComponent, // 如果showLoginComponent為真，代表要顯示登錄組件
