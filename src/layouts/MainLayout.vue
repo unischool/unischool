@@ -28,7 +28,7 @@ q-layout(view="lHh Lpr lFf")
             | $t(c.caption)
             | }}
   q-page-container
-    //冒號傳遞資料到子元件
+    // 冒號傳遞資料到子元件
     router-view(
       :courseItems="courseItems",
       :cartItems="cartItems",
@@ -170,9 +170,10 @@ export default defineComponent({
         //...複製array
         var ans = [...this.cartItems];
         ans.push({ cid: cid, count: 1 });
+        console.log(ans);
         cartItems.value = ans;
         localStorage.setItem("cartItems", JSON.stringify(ans));
-        window.alert("已加入購物車");
+ 0      window.alert("已加入購物車");
         console.log(JSON.parse(localStorage.getItem("cartItems"))); // 這裡的localStorage是瀏覽器的localStorage
       },
       openCart() {
