@@ -173,7 +173,7 @@ export default defineComponent({
         console.log(ans);
         cartItems.value = ans;
         localStorage.setItem("cartItems", JSON.stringify(ans));
- 0      window.alert("已加入購物車");
+        window.alert("已加入購物車");
         console.log(JSON.parse(localStorage.getItem("cartItems"))); // 這裡的localStorage是瀏覽器的localStorage
       },
       openCart() {
