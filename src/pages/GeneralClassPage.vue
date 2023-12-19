@@ -29,9 +29,6 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
             :max="courseItems[cid].max_price",
             :min="courseItems[cid].min_price",
             :placeholder="$t('enter_your_price')")
-        .field(v-if="courseItems[cid].hasSpecialPrice")
-          q-checkbox(v-model="useSpecialPrice",
-            :label="$t('special_price') + '：' + Number(courseItems[cid].specialPrice) + '元'")
         .small-space
         q-input.optional(rounded, outlined, v-model="comment", :placeholder="$t('enter_your_comment')")
   .filler(v-show="tab == 'join'")
@@ -73,7 +70,8 @@ export default defineComponent({
   setup(props) {
     const { t } = useI18n();
     const route = useRoute();
-    const cid = computed(() => route.params.cid); //  课程id in Dynamic Route.
+    const cid = computed(() => route.params.cid);
+
     useMeta(() => {
       // console.log(cid.value);
       // console.log(props.courseItems[cid.value]);
@@ -93,6 +91,7 @@ export default defineComponent({
       }
     });
     return {
+      //ref 內容可改變 若不用ref則內容固定
       cid,
       tab: ref("info"),
       name: ref(""),
@@ -122,15 +121,6 @@ export default defineComponent({
         { label: "Group 10", value: "group10" },
       ]),
     };
-  },
-  watch: {
-    useSpecialPrice: function (bool) {
-      if (bool) {
-        this.customPrice = this.courseItems[this.cid].specialPrice;
-      } else {
-        this.customPrice = this.courseItems[this.cid].max_price;
-      }
-    },
   },
   methods: {},
 });
