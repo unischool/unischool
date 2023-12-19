@@ -62,7 +62,7 @@ import { useMeta } from "quasar";
 import { useI18n } from "vue-i18n";
 
 export default defineComponent({
-  name: "IndexPage",
+  name: "GeneralClassPage",
   props: {
     courseItems: {
       type: Object,
