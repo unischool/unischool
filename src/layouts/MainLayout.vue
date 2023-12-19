@@ -162,13 +162,13 @@ export default defineComponent({
       },
       cancelLogin() {
         console.log("cancelLogin");
-        showLoginComponent.value = false;
+        showLoginComponent.value = false; // 不能寫this, 要改成寫.value
       },
       add_to_cart(cid) {
         console.log(cid);
         var ans = [...this.cartItems];
         ans.push({ cid: cid, count: 1 });
-        this.cartItems = ans;
+        cartItems.value = ans;
         localStorage.setItem("cartItems", JSON.stringify(ans));
         window.alert("已加入購物車");
       },
