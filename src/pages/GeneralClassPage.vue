@@ -73,7 +73,7 @@ export default defineComponent({
   setup(props) {
     const { t } = useI18n();
     const route = useRoute();
-    const cid = computed(() => route.params.cid);
+    const cid = computed(() => route.params.cid); //  课程id in Dynamic Route.
     useMeta(() => {
       // console.log(cid.value);
       // console.log(props.courseItems[cid.value]);

@@ -14,7 +14,7 @@ const routes = [
       { path: "", component: IndexPage },
       {
         // 定義動態路徑 "class/:cid"，:cid 是一個動態參數
-        path: "class/:cid",
+        path: "class/:cid", //  : is a key symobl
         // 使用 lazy loading 加載 GeneralClassPage 組件
         component: () => import("pages/GeneralClassPage.vue"),
       },
