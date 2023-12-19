@@ -168,7 +168,7 @@ export default defineComponent({
       add_to_cart(cid) {
         console.log(cid);
         //...複製array
-        var ans = [...this.cartItems];
+        var ans = [...cartItems.value];
         //將資料推到array後方
         ans.push({ cid: cid, count: 1 });
         console.log(ans);
