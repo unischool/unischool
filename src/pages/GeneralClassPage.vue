@@ -39,7 +39,7 @@ q-page#c-page.flex.flex-col.flex-start-center.full-height
       q-btn-group.flex.flex-rwd.flex-rwd-reverse.fluid
         q-btn.fluid(size="lg" inversed  color="primary", icon="arrow_back_ios", @click="tab='info'")
           | {{$t('go_back')}} &nbsp;&nbsp;
-        q-btn.fluid(size="lg" inversed color="accent", icon-right="shopping_cart", to="/cart")
+        q-btn.fluid(size="lg" inversed color="accent", icon-right="shopping_cart", @click="$emit('add_to_cart',cid)")
           | {{$t('add_to_cart')}} &nbsp;&nbsp;
   .filler(v-show="tab == 'info'")
   .row(v-show="tab == 'info'")
