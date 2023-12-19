@@ -7,7 +7,6 @@ q-layout(view="lHh Lpr lFf")
       q-btn(flat, color="white", to="/cart")
         q-icon(size="md", name="shopping_cart")
         q-badge.move-to-left(color="red", floating, size="lg") {{ countAllCounts(cartItems) }}
-        q-badge.move-to-left(color="red", floating, size="lg") {{}}
     q-breadcrumbs.padding(active-color="white", style="font-size: 16px")
       q-breadcrumbs-el(label="Home", icon="home" to="/")
       q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
