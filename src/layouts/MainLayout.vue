@@ -164,9 +164,9 @@ export default defineComponent({
       },
       add_to_cart(cid) {
         var ans = [...this.cartItems];
-        ans.push({cid: cid, count: 1});
+        ans.push({ cid: cid, count: 1 });
         this.cartItems = ans;
-      }
+      },
       openCart() {
         window.alert("建構中...");
       },
