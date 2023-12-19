@@ -6,7 +6,7 @@ q-layout(view="lHh Lpr lFf")
       q-toolbar-title {{ $t(&quot;title&quot;) }}
       q-btn(flat, color="white", @click="openCart")
         q-icon(size="md", name="shopping_cart")
-        q-badge.move-to-left(color="red", floating, size="lg") 0
+        q-badge.move-to-left(color="red", floating, size="lg") {{ countAllCounts(cartItems) }}
     q-breadcrumbs.padding(active-color="white", style="font-size: 16px")
       q-breadcrumbs-el(label="Home", icon="home" to="/")
       q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
@@ -140,6 +140,13 @@ export default defineComponent({
       showLoginComponent: showLoginComponent, // 如果showLoginComponent為真，代表要顯示登錄組件
       route,
       path,
+      countAllCounts(items) {
+        let ans = 0;
+        for (let i = 0; i < items.length; i++) {
+          ans += items[i].count;
+        }
+        return ans;
+      },
       trans(str) {
         if (str.match(/class\//)) {
           let cid = str.replace(/class\//, "");
@@ -166,14 +173,15 @@ export default defineComponent({
         showLoginComponent.value = false; // 不能寫this, 要改成寫.value
       },
       add_to_cart(cid) {
-        console.log(cid);
+        // onsole.log(cid);
         //...複製array
         var ans = [...cartItems.value];
         //將資料推到array後方
         ans.push({ cid: cid, count: 1 });
-        console.log(ans);
+        // console.log(ans);
         cartItems.value = ans;
         localStorage.setItem("cartItems", JSON.stringify(ans));
+        console.log(localStorage.getItem("cartItems"));
         window.alert("已加入購物車");
         console.log(JSON.parse(localStorage.getItem("cartItems"))); // 這裡的localStorage是瀏覽器的localStorage
       },
