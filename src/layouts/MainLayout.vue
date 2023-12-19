@@ -169,6 +169,7 @@ export default defineComponent({
         console.log(cid);
         //...複製array
         var ans = [...this.cartItems];
+        //將資料推到array後方
         ans.push({ cid: cid, count: 1 });
         console.log(ans);
         cartItems.value = ans;
