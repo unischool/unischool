@@ -32,7 +32,8 @@ q-layout(view="lHh Lpr lFf")
       :courseItems="courseItems",
       :cartItems="cartItems",
       @try-login="tryLogin",
-      @add_to_cart="add_to_cart")
+      @add_to_cart="add_to_cart",
+      )
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
   q-footer
     q-toolbar.text-center
@@ -164,10 +165,12 @@ export default defineComponent({
         showLoginComponent.value = false;
       },
       add_to_cart(cid) {
+        console.log(cid);
         var ans = [...this.cartItems];
         ans.push({ cid: cid, count: 1 });
         this.cartItems = ans;
         localStorage.setItem("cartItems", JSON.stringify(ans));
+        window.alert("已加入購物車");
       },
       openCart() {
         window.alert("建構中...");
