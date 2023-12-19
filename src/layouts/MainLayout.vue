@@ -167,6 +167,7 @@ export default defineComponent({
         var ans = [...this.cartItems];
         ans.push({ cid: cid, count: 1 });
         this.cartItems = ans;
+        localStorage.setItem("cartItems", JSON.stringify(ans));
       },
       openCart() {
         window.alert("建構中...");
