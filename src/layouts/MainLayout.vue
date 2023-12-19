@@ -31,7 +31,8 @@ q-layout(view="lHh Lpr lFf")
     router-view(
       :courseItems="courseItems",
       :cartItems="cartItems",
-      @try-login="tryLogin")
+      @try-login="tryLogin",
+      @add_to_cart="add_to_cart")
   Login(v-if="showLoginComponent", @cancel-login="cancelLogin")
   q-footer
     q-toolbar.text-center
