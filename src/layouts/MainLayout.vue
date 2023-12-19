@@ -59,7 +59,7 @@ import { useMeta } from "quasar";
 const serviceEmail = "service@chihching.org";
 
 // 使用 ref 創建一個響應式數據 cartItems，用於存儲購物車項目
-const cartItems = ref([]); // [ {cid: "death_and_life", price: 250, count: 1}, ...
+const cartItems = ref([]); // [ {cid: "death_and_life", count: 1}, ...
 
 // 使用 ref 創建一個響應式數據 courseItems，用於存儲課程項目
 const courseItems = ref({
@@ -162,6 +162,11 @@ export default defineComponent({
         console.log("cancelLogin");
         showLoginComponent.value = false;
       },
+      add_to_cart(cid) {
+        var ans = [...this.cartItems];
+        ans.push({cid: cid, count: 1});
+        this.cartItems = ans;
+      }
       openCart() {
         window.alert("建構中...");
       },
