@@ -190,5 +190,12 @@ export default defineComponent({
       },
     };
   },
+  mounted() {
+    console.log("mounted");
+    console.log(localStorage.getItem("cartItems"));
+    if (localStorage.getItem("cartItems")) {
+      cartItems.value = JSON.parse(localStorage.getItem("cartItems"));
+    }
+  },
 });
 </script>
