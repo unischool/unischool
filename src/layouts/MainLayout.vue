@@ -173,18 +173,22 @@ export default defineComponent({
         showLoginComponent.value = false; // 不能寫this, 要改成寫.value
       },
       add_to_cart(cid) {
-        // onsole.log(cid);
-        //...複製array
-        var ans = [...cartItems.value];
-        //將資料推到array後方
-        ans.push({ cid: cid, count: 1 });
-        // console.log(ans);
-        cartItems.value = ans;
-        //將local storage轉資料轉換成字串
-        localStorage.setItem("cartItems", JSON.stringify(ans));
-        console.log(localStorage.getItem("cartItems"));
-        window.alert("已加入購物車");
-        console.log(JSON.parse(localStorage.getItem("cartItems"))); // 這裡的localStorage是瀏覽器的localStorage
+        // 检查商品是否已在购物车中 使用.some()方法来检查购物车中是否已有相同cid的商品。
+        const itemExists = cartItems.value.some((item) => item.cid === cid);
+
+        if (!itemExists) {
+          // 将新商品添加到购物车
+          cartItems.value.push({ cid: cid, count: 1 });
+
+          // 更新localStorage 並將資料轉換成字串存取至localstorage
+          localStorage.setItem("cartItems", JSON.stringify(cartItems.value));
+          console.log(localStorage.getItem("cartItems"));
+          window.alert("已加入购物车");
+          console.log(JSON.parse(localStorage.getItem("cartItems")));
+        } else {
+          // 如果商品已存在，显示警告
+          window.alert("不能重复购买同一样商品");
+        }
       },
     };
   },
