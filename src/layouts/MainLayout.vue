@@ -4,9 +4,13 @@ q-layout(view="lHh Lpr lFf")
     q-toolbar
       q-btn(flat, dense, round, icon="menu", aria-label="Menu", @click="toggleLeftDrawer")
       q-toolbar-title {{ $t(&quot;title&quot;) }}
-      q-btn(flat, color="white", @click="openCart")
+      q-btn(flat, color="white", to="/cart")
         q-icon(size="md", name="shopping_cart")
+<<<<<<< Updated upstream
         q-badge.move-to-left(color="red", floating, size="lg") {{ countAllCounts(cartItems) }}
+=======
+        q-badge.move-to-left(color="red", floating, size="lg") {{}}
+>>>>>>> Stashed changes
     q-breadcrumbs.padding(active-color="white", style="font-size: 16px")
       q-breadcrumbs-el(label="Home", icon="home" to="/")
       q-breadcrumbs-el(v-if="tail(path)", :label="$t(trans(tail(path)))")
@@ -180,13 +184,11 @@ export default defineComponent({
         ans.push({ cid: cid, count: 1 });
         // console.log(ans);
         cartItems.value = ans;
+        //將local storage轉資料轉換成字串
         localStorage.setItem("cartItems", JSON.stringify(ans));
         console.log(localStorage.getItem("cartItems"));
         window.alert("已加入購物車");
         console.log(JSON.parse(localStorage.getItem("cartItems"))); // 這裡的localStorage是瀏覽器的localStorage
-      },
-      openCart() {
-        window.alert("建構中...");
       },
     };
   },
