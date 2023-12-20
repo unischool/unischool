@@ -10,6 +10,7 @@ import { useI18n } from "vue-i18n";
 
 export default {
   name: "CartPage",
+  // props: ["courseItems", "cartItems"]   <-- 這裡不需要了
   props: {
     courseItems: {
       type: Object, // { death_and_life: {...}, nullity_13: {...}, ...

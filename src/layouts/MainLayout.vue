@@ -63,6 +63,7 @@ const serviceEmail = "service@chihching.org";
 
 // 使用 ref 創建一個響應式數據 cartItems，用於存儲購物車項目
 const cartItems = ref([]); // [ {cid: "death_and_life", count: 1}, ...
+// 為了資訊安全起見，我們這裡只存儲商品的 id 和數量，而不是整個商品對象
 
 // 使用 ref 創建一個響應式數據 courseItems，用於存儲課程項目
 const courseItems = ref({
