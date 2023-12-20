@@ -12,12 +12,12 @@ export default {
   name: "CartPage",
   props: {
     courseItems: {
-      type: Object,
+      type: Object, // { death_and_life: {...}, nullity_13: {...}, ...
       required: true,
       default: () => ({}),
     },
     cartItems: {
-      type: Array,
+      type: Array, // [ {cid: "death_and_life", count: 1}, ...
       required: true,
       default: () => [],
     },
