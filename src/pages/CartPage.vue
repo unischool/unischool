@@ -1,7 +1,7 @@
 <template lang="pug">
-  q-page(padding)
-    q-table(:rows="processedCartItems" :columns="columns")
-  </template>
+q-page(padding)
+  q-table(:rows="processedCartItems" :columns="columns")
+</template>
 
 <script>
 import { computed } from "vue";
