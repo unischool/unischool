@@ -76,8 +76,6 @@ const courseItems = ref({
     link: "/death_and_life",
     max_price: 450,
     min_price: 250,
-    specialPrice: 1,
-    hasSpecialPrice: true,
   },
   nullity_13: {
     id: "nullity_13",
@@ -89,8 +87,6 @@ const courseItems = ref({
     link: "/nullity_13",
     max_price: 450,
     min_price: 250,
-    specialPrice: 1,
-    hasSpecialPrice: true,
   },
   life_art_elem: {
     id: "life_art_elem",
@@ -102,7 +98,6 @@ const courseItems = ref({
     link: "/life_art_elem",
     max_price: 450,
     min_price: 250,
-    hasSpecialPrice: false,
   },
 });
 
